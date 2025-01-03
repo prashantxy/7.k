@@ -15,10 +15,10 @@ export default function CarsPage() {
   ]
 
   return (
-    <div className="min-h-screen pt-32 bg-[#f5f5f5]">
+    <div className="min-h-screen pt-32 bg-[#121212]">
       <div className="container mx-auto px-4">
         <motion.h1 
-          className="text-3xl font-bold mb-8"
+          className="text-3xl font-bold mb-8 text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -33,12 +33,12 @@ export default function CarsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-2xl font-semibold mb-6">Available Car Types</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-white">Available Car Types</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {carTypes.map((car, index) => (
               <motion.div
                 key={car.name}
-                className="bg-white rounded-lg overflow-hidden shadow-lg"
+                className="bg-[#1e1e1e] rounded-lg overflow-hidden shadow-lg"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -52,8 +52,8 @@ export default function CarsPage() {
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{car.name}</h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <h3 className="text-xl font-semibold mb-2 text-white">{car.name}</h3>
+                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
                     <div className="flex items-center">
                       <Users className="w-4 h-4 mr-1" />
                       {car.seats} seats
@@ -63,7 +63,7 @@ export default function CarsPage() {
                       {car.luggage} luggage
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
                     <div className="flex items-center">
                       <Fuel className="w-4 h-4 mr-1" />
                       Fuel efficient
@@ -85,4 +85,3 @@ export default function CarsPage() {
     </div>
   )
 }
-
