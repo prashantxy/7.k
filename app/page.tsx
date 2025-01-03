@@ -89,7 +89,7 @@ function FeaturesSection({ features, activeFeature, setActiveFeature }: Features
                 }`}
                 onClick={() => setActiveFeature(index)}
               >
-                <feature.icon className="text-4xl mb-4" />
+                <feature.icon />
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p>{feature.description}</p>
               </motion.div>
