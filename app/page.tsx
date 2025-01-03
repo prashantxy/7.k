@@ -16,7 +16,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-100 to-green-100">
+    <main className="min-h-screen bg-gradient-to-b from-gray-800 to-black text-white">
       <HeroSection />
       <FeaturesSection features={features} activeFeature={activeFeature} setActiveFeature={setActiveFeature} />
       <CTASection />
@@ -33,12 +33,12 @@ function HeroSection() {
         transition={{ duration: 0.8 }}
         className="text-center z-10"
       >
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Intelligent Mobile Travel Guide</h1>
-        <p className="text-xl md:text-2xl text-white mb-8">Your AI-powered companion for unforgettable journeys</p>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6">Intelligent Mobile Travel Guide</h1>
+        <p className="text-xl md:text-2xl mb-8">Your AI-powered companion for unforgettable journeys</p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
+          className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
         >
           Start Exploring
         </motion.button>
@@ -85,11 +85,11 @@ function FeaturesSection({ features, activeFeature, setActiveFeature }: Features
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`p-6 rounded-lg cursor-pointer transition-colors ${
-                  activeFeature === index ? 'bg-blue-600 text-white' : 'bg-white shadow-md'
+                  activeFeature === index ? 'bg-blue-600 text-white' : 'bg-gray-800 shadow-md'
                 }`}
                 onClick={() => setActiveFeature(index)}
               >
-                <feature.icon  />
+                <feature.icon className="text-4xl mb-4" />
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p>{feature.description}</p>
               </motion.div>
@@ -100,7 +100,7 @@ function FeaturesSection({ features, activeFeature, setActiveFeature }: Features
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
+            className="bg-gray-800 rounded-lg shadow-lg overflow-hidden"
           >
             <Image
               src={`/placeholder.svg?height=600&width=800&text=${features[activeFeature].title}`}
@@ -116,8 +116,6 @@ function FeaturesSection({ features, activeFeature, setActiveFeature }: Features
   );
 }
 
-
-
 function CTASection() {
   return (
     <section className="py-20 bg-blue-600 text-white">
@@ -128,14 +126,14 @@ function CTASection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
+            className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
           >
             Download for iOS
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
+            className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
           >
             Download for Android
           </motion.button>
@@ -144,4 +142,3 @@ function CTASection() {
     </section>
   )
 }
-
