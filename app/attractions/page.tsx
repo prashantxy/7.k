@@ -15,10 +15,10 @@ export default function AttractionsPage() {
   ]
 
   return (
-    <div className="min-h-screen pt-32 bg-[#f5f5f5]">
+    <div className="min-h-screen pt-32 bg-[#121212]">
       <div className="container mx-auto px-4">
         <motion.h1 
-          className="text-3xl font-bold mb-8"
+          className="text-3xl font-bold mb-8 text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -33,12 +33,12 @@ export default function AttractionsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-2xl font-semibold mb-6">Popular Attractions</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-white">Popular Attractions</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {attractions.map((attraction, index) => (
               <motion.div
                 key={attraction.name}
-                className="bg-white rounded-lg overflow-hidden shadow-lg"
+                className="bg-[#1e1e1e] rounded-lg overflow-hidden shadow-lg"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -52,15 +52,15 @@ export default function AttractionsPage() {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{attraction.name}</h3>
-                  <p className="text-gray-600 mb-2">{attraction.location}</p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <h3 className="text-xl font-semibold mb-2 text-white">{attraction.name}</h3>
+                  <p className="text-gray-400 mb-2">{attraction.location}</p>
+                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
                     <div className="flex items-center">
                       <Star className="w-4 h-4 mr-1 text-yellow-400" />
                       {attraction.rating}
                     </div>
                     <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
+                      <Clock className="w-4 h-4 mr-1 text-gray-400" />
                       {attraction.duration}
                     </div>
                   </div>
@@ -76,4 +76,3 @@ export default function AttractionsPage() {
     </div>
   )
 }
-
