@@ -44,7 +44,7 @@ export function SearchForm() {
           <button
             type="button"
             onClick={() => setIsCheckInOpen(!isCheckInOpen)}
-            className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
+            className="w-full px-4 py-2 text-left bg-white border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
           >
             {checkIn ? checkIn.toLocaleDateString() : 'Check-in'}
           </button>
@@ -60,7 +60,7 @@ export function SearchForm() {
           <button
             type="button"
             onClick={() => setIsCheckOutOpen(!isCheckOutOpen)}
-            className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
+            className="w-full px-4 py-2 text-left bg-white border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
           >
             {checkOut ? checkOut.toLocaleDateString() : 'Check-out'}
           </button>
