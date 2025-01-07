@@ -35,7 +35,7 @@ export function DatePicker({ selected, onSelect }: DatePickerProps) {
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
       <div className="flex justify-between items-center mb-4">
-        <button onClick={handlePrevMonth} className="p-1 rounded-full hover:bg-gray-100">
+        <button onClick={handlePrevMonth} className="p-1 rounded-full hover:bg-gray-100 text-black">
           <ChevronLeft className="w-5 h-5" />
         </button>
         <h2 className="text-lg font-semibold">
