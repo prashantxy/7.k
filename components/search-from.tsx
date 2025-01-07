@@ -35,7 +35,7 @@ export function SearchForm() {
             placeholder="Where are you going?"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md bg-gray-800 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-950 w-5 h-5" />
         </div>
