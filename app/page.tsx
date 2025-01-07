@@ -1,97 +1,139 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { DatePicker } from '@/components/ui/date-picker'
-import { Dropdown } from '@/components/ui/dropdown'
-import { Search, Calendar, Users } from 'lucide-react'
+import Image from 'next/image'
+import { useState } from 'react'
+import { FaUtensils, FaHotel, FaLandmark, FaGlobe } from 'react-icons/fa'
+export default function Home() {
+  const [activeFeature, setActiveFeature] = useState(0)
 
-export function SearchForm() {
-  const [destination, setDestination] = useState('')
-  const [checkIn, setCheckIn] = useState<Date | null>(null)
-  const [checkOut, setCheckOut] = useState<Date | null>(null)
-  const [guests, setGuests] = useState('2 adults')
-  const [isCheckInOpen, setIsCheckInOpen] = useState(false)
-  const [isCheckOutOpen, setIsCheckOutOpen] = useState(false)
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle search logic here
-    console.log('Search:', { destination, checkIn, checkOut, guests })
-  }
+  const features = [
+    { icon: FaUtensils, title: 'Restaurant Recommendations', description: 'Discover local cuisines and hidden gems' },
+    { icon: FaHotel, title: 'Hotel Bookings', description: 'Find and book the perfect accommodations' },
+    { icon: FaLandmark, title: 'Attractions', description: 'Explore must-visit sights and experiences' },
+    { icon: FaGlobe, title: 'Multilingual Support', description: 'Travel confidently with language assistance' },
+  ]
 
   return (
-    <motion.form
-      onSubmit={handleSearch}
-      className="bg-white p-6 rounded-lg shadow-lg"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Where are you going?"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10 text-gray-800"
-          />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
-        </div>
-
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => setIsCheckInOpen(!isCheckInOpen)}
-            className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10 text-gray-800"
-          >
-            {checkIn ? checkIn.toLocaleDateString() : 'Check-in'}
-          </button>
-          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
-          {isCheckInOpen && (
-            <div className="absolute z-10 mt-1">
-              <DatePicker selected={checkIn} onSelect={(date) => { setCheckIn(date); setIsCheckInOpen(false); }} />
-            </div>
-          )}
-        </div>
-
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => setIsCheckOutOpen(!isCheckOutOpen)}
-            className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10 text-gray-800"
-          >
-            {checkOut ? checkOut.toLocaleDateString() : 'Check-out'}
-          </button>
-          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
-          {isCheckOutOpen && (
-            <div className="absolute z-10 mt-1">
-              <DatePicker selected={checkOut} onSelect={(date) => { setCheckOut(date); setIsCheckOutOpen(false); }} />
-            </div>
-          )}
-        </div>
-
-        <div className="relative">
-          <Dropdown
-            options={['1 adult', '2 adults', '2 adults, 1 child', '2 adults, 2 children']}
-            selected={guests}
-            onSelect={setGuests}
-            placeholder="Guests"
-            className="text-gray-800"
-          />
-          <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800 w-5 h-5" />
-        </div>
-      </div>
-
-      <motion.button
-        type="submit"
-        className="w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Search
-      </motion.button>
-    </motion.form>
+    <main className="min-h-screen bg-gradient-to-b from-gray-800 to-black text-white">
+      <HeroSection />
+      <FeaturesSection features={features} activeFeature={activeFeature} setActiveFeature={setActiveFeature} />
+      <CTASection />
+    </main>
   )
 }
+
+function HeroSection() {
+  return (
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center z-10"
+      >
+        <h1 className="text-5xl md:text-7xl font-bold mb-6">Intelligent Mobile Travel Guide</h1>
+        <p className="text-xl md:text-2xl mb-8">Your AI-powered companion for unforgettable journeys</p>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
+        >
+          Start Exploring
+        </motion.button>
+      </motion.div>
+      <motion.div
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ repeat: Infinity, duration: 5 }}
+        className="absolute inset-0 z-0"
+      >
+        <Image
+          src="/placeholder.svg?height=1080&width=1920"
+          alt="Travel collage"
+          layout="fill"
+          objectFit="cover"
+          className="filter brightness-50"
+        />
+      </motion.div>
+    </section>
+  )
+}
+interface Feature {
+  icon: React.ComponentType; // Icon components (e.g., FaUtensils) are React components
+  title: string;
+  description: string;
+}
+interface FeaturesSectionProps {
+  features: Feature[];
+  activeFeature: number;
+  setActiveFeature: (index: number) => void; // Function to set active feature index
+}
+
+function FeaturesSection({ features, activeFeature, setActiveFeature }: FeaturesSectionProps) {
+  return (
+    <section className="py-20 px-4 md:px-0">
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12">Discover Our Features</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`p-6 rounded-lg cursor-pointer transition-colors ${
+                  activeFeature === index ? 'bg-blue-600 text-white' : 'bg-gray-800 shadow-md'
+                }`}
+                onClick={() => setActiveFeature(index)}
+              >
+                <feature.icon />
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p>{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            key={activeFeature}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          >
+            <Image
+              src={`/placeholder.svg?height=600&width=800&text=${features[activeFeature].title}`}
+              alt={features[activeFeature].title}
+              width={800}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTASection() {
+  return (
+    <section className="py-20 bg-blue-600 text-white">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-6">Ready to Elevate Your Travel Experience?</h2>
+        <p className="text-xl mb-8">Download the Intelligent Mobile Travel Guide app now and embark on your next adventure!</p>
+        <div className="flex justify-center space-x-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
+          >
+            Download for iOS
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg"
+          >
+            Download for Android
+          </motion.button>
+        </div>
+      </div>
+    </section>
