@@ -1,13 +1,18 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Menu, X, ChevronDown, Globe, HelpCircle } from 'lucide-react'
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Menu, X, ChevronDown, Globe, HelpCircle } from 'lucide-react';
 
-const navItems = [
+type NavItem = {
+  href: string;
+  label: string;
+};
+
+const navItems: NavItem[] = [
   { href: '/stays', label: 'Stays' },
   { href: '/flights', label: 'Flights' },
   { href: '/packages', label: 'Flight + Hotel' },
@@ -15,22 +20,21 @@ const navItems = [
   { href: '/cruises', label: 'Cruises' },
   { href: '/attractions', label: 'Attractions' },
   { href: '/taxis', label: 'Airport taxis' },
-]
+];
 
 export function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
-  const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="bg-blue-600 text-white">
       <nav className="container mx-auto px-4 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-         <Link href="/" className="text-sm font-bold lg:text-base">
-          Travel Intelligence Guide
-         </Link>
-
+          <Link href="/" className="text-sm font-bold lg:text-base">
+            Travel Intelligence Guide
+          </Link>
 
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-6">
@@ -49,6 +53,7 @@ export function Navbar() {
 
           {/* Desktop buttons */}
           <div className="hidden md:flex items-center space-x-6">
+            {/* Language Dropdown */}
             <div className="relative">
               <Button
                 variant="ghost"
@@ -104,51 +109,62 @@ export function Navbar() {
         </div>
 
         {/* Mobile menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    pathname === item.href
-                      ? 'bg-blue-700 text-white'
-                      : 'text-white hover:bg-blue-700'
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden"
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`block px-3 py-2 rounded-md text-base font-medium ${
+                      pathname === item.href
+                        ? 'bg-blue-700 text-white'
+                        : 'text-white hover:bg-blue-700'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="px-5 pt-4 pb-3 border-t border-blue-700">
+                <Button variant="ghost" className="text-white w-full justify-start mb-2">
+                  <Globe className="w-5 h-5 mr-2" />
+                  Language
+                </Button>
+                <Button variant="ghost" className="text-white w-full justify-start mb-2">
+                  <HelpCircle className="w-5 h-5 mr-2" />
+                  Help
+                </Button>
+                <Button
+                  variant="outline"
+                  className="text-white border-white hover:bg-blue-700 w-full mb-2"
                 >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-            <div className="px-5 pt-4 pb-3 border-t border-blue-700">
-              <Button variant="ghost" className="text-white w-full justify-start mb-2">
-                <Globe className="w-5 h-5 mr-2" />
-                Language
-              </Button>
-              <Button variant="ghost" className="text-white w-full justify-start mb-2">
-                <HelpCircle className="w-5 h-5 mr-2" />
-                Help
-              </Button>
-              <Button variant="outline" className="text-white border-white hover:bg-blue-700 w-full mb-2">
-                List your property
-              </Button>
-              <Button variant="outline" className="text-white border-white hover:bg-blue-700 w-full mb-2">
-                Register
-              </Button>
-              <Button variant="outline" className="text-white border-white hover:bg-blue-700 w-full">
-                Sign in
-              </Button>
-            </div>
-          </motion.div>
-        )}
+                  List your property
+                </Button>
+                <Button
+                  variant="outline"
+                  className="text-white border-white hover:bg-blue-700 w-full mb-2"
+                >
+                  Register
+                </Button>
+                <Button
+                  variant="outline"
+                  className="text-white border-white hover:bg-blue-700 w-full"
+                >
+                  Sign in
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
-  )
+  );
 }
