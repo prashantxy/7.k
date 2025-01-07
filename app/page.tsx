@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 import { FaUtensils, FaHotel, FaLandmark, FaGlobe } from 'react-icons/fa'
+
 export default function Home() {
   const [activeFeature, setActiveFeature] = useState(0)
 
@@ -58,6 +59,7 @@ function HeroSection() {
     </section>
   )
 }
+
 interface Feature {
   icon: React.ComponentType; // Icon components (e.g., FaUtensils) are React components
   title: string;
@@ -137,3 +139,5 @@ function CTASection() {
         </div>
       </div>
     </section>
+  );
+}
