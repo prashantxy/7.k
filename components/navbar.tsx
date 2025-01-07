@@ -27,9 +27,10 @@ export function Navbar() {
       <nav className="container mx-auto px-4 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-1xl font-bold lg:text-2xl">
-            Travel Intelligence Guide
-          </Link>
+         <Link href="/" className="text-sm font-bold lg:text-base">
+          Travel Intelligence Guide
+         </Link>
+
 
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-6">
