@@ -37,7 +37,7 @@ export function SearchForm() {
             onChange={(e) => setDestination(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-950 w-5 h-5" />
         </div>
 
         <div className="relative">
@@ -48,7 +48,7 @@ export function SearchForm() {
           >
             {checkIn ? checkIn.toLocaleDateString() : 'Check-in'}
           </button>
-          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-950 w-5 h-5" />
           {isCheckInOpen && (
             <div className="absolute z-10 mt-1">
               <DatePicker selected={checkIn} onSelect={(date) => { setCheckIn(date); setIsCheckInOpen(false); }} />
@@ -64,7 +64,7 @@ export function SearchForm() {
           >
             {checkOut ? checkOut.toLocaleDateString() : 'Check-out'}
           </button>
-          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-950 w-5 h-5" />
           {isCheckOutOpen && (
             <div className="absolute z-10 mt-1">
               <DatePicker selected={checkOut} onSelect={(date) => { setCheckOut(date); setIsCheckOutOpen(false); }} />
@@ -79,7 +79,7 @@ export function SearchForm() {
             onSelect={setGuests}
             placeholder="Guests"
           />
-          <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-950 w-5 h-5" />
         </div>
       </div>
 
