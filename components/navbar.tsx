@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
   { href: '/cars', label: 'Car rentals' },
   { href: '/cruises', label: 'Cruises' },
   { href: '/attractions', label: 'Attractions' },
-  { href: '/taxis', label: 'Airport taxis' },
+  { href: '/map', label: 'map' },
 ];
 
 export function Navbar() {
